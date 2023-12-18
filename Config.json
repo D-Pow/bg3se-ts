@@ -1,0 +1,13 @@
+{
+    "RequiredVersion": 1,
+    "ModTable": "MyMod",
+    "FeatureFlags": [ "Lua" ],
+    "CreateConsole": true,
+    "EnableLogging": true,
+    "LogRuntime": true,
+    "LogCompile": true,
+    "EnableExtensions": true,
+    "EnableDebugger": true,
+    "EnableLuaDebugger": true,
+    "DeveloperMode": true
+}

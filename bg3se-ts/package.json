@@ -1,0 +1,43 @@
+{
+  "name": "bg3se-ts",
+  "version": "0.1.0",
+  "description": "TypeScript version of bg3se",
+  "main": "./dist/index.js",
+  "author": "D-Pow",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D-Pow/bg3se-ts.git"
+  },
+  "engines": {
+    "node": ">=16.20.0",
+    "npm": ">=8"
+  },
+  "files": [
+    "./dist"
+  ],
+  "config": {
+    "buildOutputDir": "dist",
+    "pathUsedByBg3se": "../Lua/BootstrapServer.lua",
+    "eslintExtensions": ".tsx,.ts,.jsx,.js,.mjs,.cjs"
+  },
+  "scripts": {
+    "start": "npm run build -- --watch",
+    "build": "tstl",
+    "tsBuild": "tsc",
+    "typecheck": "tsc --noEmit",
+    "typecheck:file-list": "npm run --silent typecheck | grep -Eio '^[a-zA-Z/_@\\.-]+' | sort -u",
+    "clean": "npx shx rm -rf $npm_package_config_buildOutputDir coverage",
+    "clean:node_modules": "npm run clean; mv node_modules znode_modules; ( rm -rf znode_modules & );",
+    "prebuild": "npm run clean --"
+  },
+  "overrides": {
+    "typescript": "$typescript"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^5.3.3",
+    "typescript-to-lua": "^1.22.0"
+  }
+}

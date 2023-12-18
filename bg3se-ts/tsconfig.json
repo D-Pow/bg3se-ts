@@ -1,0 +1,69 @@
+{
+    "$schema": "https://raw.githubusercontent.com/TypeScriptToLua/TypeScriptToLua/master/tsconfig-schema.json",
+    "compilerOptions": {
+        "target": "ESNext",
+        "lib": [
+            "ESNext"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "strict": true,
+        "allowJs": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "newLine": "lf",
+        "preserveSymlinks": false,
+        "incremental": true,
+        "isolatedModules": true,
+        "outDir": "../Lua",
+        "declaration": true,
+        "declarationDir": "dist/types",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [ "src/*" ],
+            "~/*": [ "*" ]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "./node_modules",
+        "dist"
+    ],
+
+
+    // https://typescripttolua.github.io/docs/configuration
+    "tstl": {
+        "luaTarget": "JIT",
+        "lua51AllowTryCatchInAsyncAwait": true,
+        "luaLibImport": "inline"  // `require()` is overwritten by `Ext.Require()` so inline imported modules for interoperability
+    },
+
+
+    "ts-node": {
+        "require": [
+            "tsconfig-paths/register"
+        ],
+        "preferTsExts": true,
+        "experimentalReplAwait": true,
+        "experimentalResolver": true,
+        "transpileOnly": true,
+        "moduleTypes": {
+            "**/*.cjs": "cjs"
+        },
+        "compilerOptions": {
+            "module": "NodeNext",
+            "moduleResolution": "NodeNext",
+            "isolatedModules": false
+        },
+        "pretty": true,
+        "include": [
+            "./**/*"
+        ]
+    }
+}
