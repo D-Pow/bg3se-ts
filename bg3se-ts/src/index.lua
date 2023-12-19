@@ -67,8 +67,17 @@ function getCharSpellAttributes()
     end
 end
 
-function getCharSpells()
-    for k,v in pairs(Ext.Entity.Get(GetHostCharacter()).SpellBook) do print(k, v) end
+function getCharSpellCosts()
+    for k,v in pairs(Ext.Entity.Get(GetHostCharacter()).SpellBook) do
+        if (k == "Spells") then
+            for i,spell in pairs(v) do
+                spellName = spell.Id.OriginatorPrototype
+                spellCost = Ext.Stats.Get(spellName).UseCosts
+
+                print(spellCost)
+            end
+        end
+    end
 end
 
 function findKey(table)

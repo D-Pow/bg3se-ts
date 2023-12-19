@@ -2,9 +2,10 @@ const require = Ext.Require;
 
 /** @noSelf **/
 declare interface Ext {
-    Entity: Entity;
     Require(module: string): unknown;
     Dump(arg: unknown): void;
+    Entity: Entity;
+    Stats: Stats;
 }
 declare const Ext: Ext;
 
@@ -17,6 +18,23 @@ declare interface Entity {
     GetHostCharacter(): unknown;
 }
 declare const Entity: Entity;
+
+/** @noSelf **/
+declare interface Stats {
+    Get(charStat: string): Stat;
+}
+declare const Stats: Stats;
+
+/** @noSelf **/
+declare interface Stat {
+    UseCosts: string;
+    function Sync(): void;
+}
+debugger; const Stat: Stat;
+
+declare function _D(arg): void;
+declare function _P(arg): void;
+
 
 
 
@@ -43,6 +61,30 @@ function getSpells() {
     log(spells);
 
     return spells;
+}
+
+
+function getAllSpells() {
+    return Ext.Stats.GetStats("SpellData");
+}
+
+
+function setSpellSlotCost(spellName, slotCost = 0) {
+    const { UseCosts } = Ext.Stats.Get(spellName);
+    const spellLevel = UseCosts.match(/(?<=:)\d+$/)[0];
+
+    if (slotCost) {
+        Ext.Stats.Get(spellName).UseCosts = `ActionPoint:1;SpellSlotsGroup:${slotCost}:${slotCost}:${spellLevel}`;
+    } else {
+        Ext.Stats.Get(spellName).UseCosts = 'ActionPoint:1';
+    }
+
+    Ext.Stats.Get(spellName):Sync();
+}
+
+
+function addSpell(spellName) {
+    AddSpell(GetHostCharacter(), spellName, 0, 1)
 }
 
 
