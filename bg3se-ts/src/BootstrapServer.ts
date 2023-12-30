@@ -51,11 +51,12 @@ function log(...args) {
 
 
 function getSpells() {
-    const charComponents = Ext.Entity.Get(GetHostCharacter()).GetAllComponents();
+    const char = Ext.Entity.Get(GetHostCharacter());
+    const charComponents = char.GetAllComponents();
 
     let spells = {};
 
-    Object.entries(charComponents['SpellModificationContainer']).forEach(([ k1, v1 ]) => {
+    Object.entries(charComponents['SpellContainer']).forEach(([ k1, v1 ]) => {
         Object.entries(v1).forEach(([ k2, v2 ]) => {
             Object.entries(v2).forEach(([ k3, v3 ]) => {
                 spells = v3;
