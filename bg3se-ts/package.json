@@ -22,7 +22,7 @@
     "eslintExtensions": ".tsx,.ts,.jsx,.js,.mjs,.cjs"
   },
   "scripts": {
-    "start": "nodemon -e ts --exec \"npm run build\"",
+    "start": "nodemon -e ts,mjs --exec \"npm run build\"",
     "build": "npm run build:lua && npm run build:toCmdStrings",
     "build:lua": "tstl || exit 0",
     "build:toCmdStrings": "node ./scripts/toCmdString.mjs",
