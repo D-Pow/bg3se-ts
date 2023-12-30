@@ -19,14 +19,14 @@
         "preserveSymlinks": false,
         "incremental": true,
         "isolatedModules": true,
-        "outDir": "../Lua",
-        "declaration": true,
-        "declarationDir": "dist/types",
+        "outDir": "dist",
+        "declaration": false,
         "baseUrl": ".",
         "paths": {
             "@/*": [ "src/*" ],
             "~/*": [ "*" ]
-        }
+        },
+        "removeComments": true
     },
     "include": [
         "./src/**/*"
