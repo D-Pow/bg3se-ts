@@ -33,8 +33,14 @@ export function stripNewlines(str, {
 }
 
 export function toOneLineCmdString(str) {
-    return stripNewlines(stripLuaComments(str));
+    return patchTsToLuaBugs(stripNewlines(stripLuaComments(str)));
 }
+
+
+export function patchTsToLuaBugs(str) {
+    return str.replace(/\s+(Sync\(\))/g, ':$1');
+}
+
 
 export function findLuaFiles(dir = buildOutputDir) {
     const allFilesInDir = fs.readdirSync(dir);
