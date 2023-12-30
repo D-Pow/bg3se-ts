@@ -151,47 +151,48 @@ setSpellSlotCost("Target_MistyStep_3");
 setSpellSlotCost("Projectile_GuidingBolt");
 
 
-// Ext.Stats.GetStats("SpellData")
+/*
+Ext.Stats.GetStats("SpellData")
+function foo() {
+    function parseFourth()
+        for k,v in pairs(Ext.Entity.Get(GetHostCharacter())) do
+            return k, v
+        end
+    end
 
-// function foo() {
-//     function parseFourth()
-//         for k,v in pairs(Ext.Entity.Get(GetHostCharacter())) do
-//             return k, v
-//         end
-//     end
-//
-//     function parseThird(a)
-//         if (a == 2) then
-//             return parseFourth()
-//         end
-//     end
-//
-//     function parseSecond(x)
-//         for k1,v1 in pairs(x) do
-//             for k2,v2 in pairs(v1) do
-//                 for k3,v3 in pairs(v2) do
-//                     for k4 in pairs(k3) do
-//                         return parseThird(k4)
-//                     end
-//                 end
-//             end
-//         end
-//     end
-//
-//     -- https://github.com/Norbyte/bg3se/blob/main/Docs/API.md#extstatsgetstat-type-level-statentry
-//     function parseFirst()
-//         for k,v in pairs() do
-//             if (k == "SpellModificationContainer" or k == "SpellContainer" or k == "CCPrepareSpell" or k == "AddedSpells") then
-//                 if (string.len(k) > 0) then
-//                     if (type(pairs(v)) ~= "function") then
-//                         return parseSecond(pairs(v))
-//                     end
-//                 end
-//             end
-//         end
-//     end
-//
-//     Ext.Entity.Get(GetHostCharacter()):GetAllComponents()
-//
-//     print(parseFirst())
-// }
+    function parseThird(a)
+        if (a == 2) then
+            return parseFourth()
+        end
+    end
+
+    function parseSecond(x)
+        for k1,v1 in pairs(x) do
+            for k2,v2 in pairs(v1) do
+                for k3,v3 in pairs(v2) do
+                    for k4 in pairs(k3) do
+                        return parseThird(k4)
+                    end
+                end
+            end
+        end
+    end
+
+    // https://github.com/Norbyte/bg3se/blob/main/Docs/API.md#extstatsgetstat-type-level-statentry
+    function parseFirst()
+        for k,v in pairs() do
+            if (k == "SpellModificationContainer" or k == "SpellContainer" or k == "CCPrepareSpell" or k == "AddedSpells") then
+                if (string.len(k) > 0) then
+                    if (type(pairs(v)) ~= "function") then
+                        return parseSecond(pairs(v))
+                    end
+                end
+            end
+        end
+    end
+
+    Ext.Entity.Get(GetHostCharacter()):GetAllComponents()
+
+    print(parseFirst())
+}
+*/
