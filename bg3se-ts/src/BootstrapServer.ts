@@ -1,24 +1,28 @@
 // @ts-nocheck
 
+/*
+ * All spells: https://pastebin.com/xnbqjUJT
+ */
+
 const require = Ext.Require;
 
-/** @noSelf **/
 declare interface Ext {
     Require(module: string): unknown;
     Dump(arg: unknown): void;
     Entity: Entity;
     Stats: Stats;
+    GetStats(): string[];
 }
+declare const Ext: Ext;
 
 /** @noSelf **/
 declare interface Entity {
     Get(character: unknown): {
-        GetAllComponents(): Record<string, unknown>;
+        GetAllComponents(this: any): Record<string, unknown>;
     };
 
     GetHostCharacter(): unknown;
 }
-declare const Entity: Entity;
 
 /** @noSelf **/
 declare interface Stats {
@@ -31,6 +35,7 @@ declare interface Stat {
     UseCosts: string;
     Sync(this: any): void;
 }
+declare const Stat: Stat;
 
 declare function _D(arg): void;
 declare function _P(arg): void;
