@@ -78,9 +78,10 @@ function getAllSpells() {
 function setSpellSlotCost(spellName, slotCost = 0) {
     const spell = Ext.Stats.Get(spellName);
     const { UseCosts } = spell;
-    const spellLevel = (UseCosts as string).match(/(?<=:)\d+$/)[0];
+    // const spellLevel = UseCosts.match(/(?<=:)\d+$/)[0];
+    const spellLevel = string.gsub(UseCosts, ".*:(%d+)$", "%1");
 
-    if (Boolean(slotCost)) {
+    if (slotCost > 0) {
         spell.UseCosts = `ActionPoint:1;SpellSlotsGroup:${slotCost}:${slotCost}:${spellLevel}`;
     } else {
         spell.UseCosts = 'ActionPoint:1';
