@@ -22,7 +22,13 @@ export function stripLuaComments(str) {
     return str.replace(/(?<=^|\n)--[^\n]*\n/g, '');
 }
 
-export function stripNewlines(str) {
+export function stripNewlines(str, {
+    statementsOnSeparateLines = true,
+} = {}) {
+    if (statementsOnSeparateLines) {
+        return str.replace(/\n(\s+|end)/g, ' $1');
+    }
+
     return str.replace(/\n/g, ' ');
 }
 
