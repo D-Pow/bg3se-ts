@@ -18,23 +18,26 @@
   ],
   "config": {
     "buildOutputDir": "dist",
-    "pathUsedByBg3se": "../Lua/BootstrapServer.lua",
+    "pathUsedByBg3se": "dist/BootstrapServer.lua",
     "eslintExtensions": ".tsx,.ts,.jsx,.js,.mjs,.cjs"
   },
   "scripts": {
-    "start": "npm run build -- --watch",
-    "build": "tstl",
+    "start": "nodemon -e ts --exec \"npm run build\"",
+    "build": "npm run build:lua && npm run build:toCmdStrings",
+    "build:lua": "tstl || exit 0",
+    "build:toCmdStrings": "node ./scripts/toCmdString.mjs",
     "tsBuild": "tsc",
     "typecheck": "tsc --noEmit",
     "typecheck:file-list": "npm run --silent typecheck | grep -Eio '^[a-zA-Z/_@\\.-]+' | sort -u",
-    "clean": "npx shx rm -rf $npm_package_config_buildOutputDir coverage",
+    "clean": "node -e \"require('child_process').execSync(`rm -rf ${process.env.npm_package_config_buildOutputDir}`)\"",
     "clean:node_modules": "npm run clean; mv node_modules znode_modules; ( rm -rf znode_modules & );",
-    "prebuild": "npm run clean --"
+    "_prebuild": "npm run clean --"
   },
   "overrides": {
     "typescript": "$typescript"
   },
   "devDependencies": {
+    "nodemon": "^3.0.2",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
     "typescript": "^5.3.3",
