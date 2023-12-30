@@ -41,7 +41,9 @@
     "tstl": {
         "luaTarget": "JIT",
         "lua51AllowTryCatchInAsyncAwait": true,
-        "luaLibImport": "inline"  // `require()` is overwritten by `Ext.Require()` so inline imported modules for interoperability
+        "luaLibImport": "inline",  // `require()` is overwritten by `Ext.Require()` so inline imported modules for interoperability
+        "noImplicitSelf": true,
+        "noHeader": true,
     },
 
 
