@@ -142,6 +142,15 @@ function printTable(table) {
 }
 
 
+// Mod commands are persisted between game loads but not when the game reboots
+
+setSpellSlotCost("Projectile_Fireball_4");
+setSpellSlotCost("Projectile_Fireball_5");
+setSpellSlotCost("Projectile_Fireball_6");
+setSpellSlotCost("Target_MistyStep_3");
+setSpellSlotCost("Projectile_GuidingBolt");
+
+
 // Ext.Stats.GetStats("SpellData")
 
 // function foo() {
