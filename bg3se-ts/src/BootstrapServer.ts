@@ -6,6 +6,7 @@
 
 const require = Ext.Require;
 
+/** @noSelf **/
 declare interface Ext {
     Require(module: string): unknown;
     Dump(arg: unknown): void;
@@ -13,7 +14,6 @@ declare interface Ext {
     Stats: Stats;
     GetStats(): string[];
 }
-declare const Ext: Ext;
 
 /** @noSelf **/
 declare interface Entity {
@@ -45,8 +45,9 @@ declare function _P(arg): void;
 
 function log(...args) {
     // console.log(util.inspect(sortedTable, { depth: undefined, showHidden: true, colors: true }));
-
-    args.forEach(arg => print(Ext.Dump(arg)));
+    args.forEach(arg => {
+        Ext.Dump(arg);
+    });
 }
 
 
@@ -54,14 +55,10 @@ function getSpells() {
     const char = Ext.Entity.Get(GetHostCharacter());
     const charComponents = char.GetAllComponents();
 
-    let spells = {};
+    const spells = {};
 
-    Object.entries(charComponents['SpellContainer']).forEach(([ k1, v1 ]) => {
-        Object.entries(v1).forEach(([ k2, v2 ]) => {
-            Object.entries(v2).forEach(([ k3, v3 ]) => {
-                spells = v3;
-            });
-        });
+    Object.entries(charComponents.SpellContainer.Spells).forEach(([i, spellInfo]) => {
+        spells[spellInfo.SpellId.OriginatorPrototype] = spellInfo;
     });
 
     log(spells);

@@ -38,7 +38,13 @@ export function toOneLineCmdString(str) {
 
 
 export function patchTsToLuaBugs(str) {
-    return str.replace(/\s+(Sync\(\))/g, ':$1');
+    let fixedFileContent = str;
+
+    fixedFileContent = fixedFileContent.replace(/\s+(Sync\(\))/g, ':$1');
+    fixedFileContent = fixedFileContent.replace(/\s*\.(GetAllComponents\(\))/g, ':$1');
+    fixedFileContent = fixedFileContent.replace(/(?<=^|\n)local /g, '');
+
+    return fixedFileContent;
 }
 
 
