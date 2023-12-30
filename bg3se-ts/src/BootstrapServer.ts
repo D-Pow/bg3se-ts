@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const require = Ext.Require;
 
 /** @noSelf **/
@@ -7,7 +9,6 @@ declare interface Ext {
     Entity: Entity;
     Stats: Stats;
 }
-declare const Ext: Ext;
 
 /** @noSelf **/
 declare interface Entity {
@@ -21,16 +22,15 @@ declare const Entity: Entity;
 
 /** @noSelf **/
 declare interface Stats {
+    GetStats(stat: string): Stat;
     Get(charStat: string): Stat;
 }
-declare const Stats: Stats;
 
 /** @noSelf **/
 declare interface Stat {
     UseCosts: string;
-    function Sync(): void;
+    Sync(this: any): void;
 }
-debugger; const Stat: Stat;
 
 declare function _D(arg): void;
 declare function _P(arg): void;
@@ -65,18 +65,19 @@ function getSpells() {
 
 
 function getAllSpells() {
-    return Ext.Stats.GetStats("SpellData");
+    return Ext.Stats:GetStats("SpellData");
 }
 
 
 function setSpellSlotCost(spellName, slotCost = 0) {
-    const { UseCosts } = Ext.Stats.Get(spellName);
-    const spellLevel = UseCosts.match(/(?<=:)\d+$/)[0];
+    const spell = Ext.Stats.Get(spellName);
+    const { UseCosts } = spell;
+    const spellLevel = (UseCosts as string).match(/(?<=:)\d+$/)[0];
 
-    if (slotCost) {
-        Ext.Stats.Get(spellName).UseCosts = `ActionPoint:1;SpellSlotsGroup:${slotCost}:${slotCost}:${spellLevel}`;
+    if (Boolean(slotCost)) {
+        spell.UseCosts = `ActionPoint:1;SpellSlotsGroup:${slotCost}:${slotCost}:${spellLevel}`;
     } else {
-        Ext.Stats.Get(spellName).UseCosts = 'ActionPoint:1';
+        spell.UseCosts = 'ActionPoint:1';
     }
 
     Ext.Stats.Get(spellName):Sync();
