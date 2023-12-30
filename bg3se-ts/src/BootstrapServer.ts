@@ -147,6 +147,12 @@ setSpellSlotCost("Projectile_Fireball_6");
 setSpellSlotCost("Target_MistyStep_3");
 setSpellSlotCost("Projectile_GuidingBolt");
 
+// Add item(s) to inventory.
+// See:
+//  - https://www.reddit.com/r/BaldursGate3/comments/15w6b72/help_need_to_find_item_uuid/
+// TemplateAddTo("UUID", GetHostCharacter(), quantity);
+// TemplateAddTo("LOOT_Camp_Pack", GetHostCharacter(), 4);
+
 
 /*
 Ext.Stats.GetStats("SpellData")
