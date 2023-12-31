@@ -146,6 +146,26 @@ setSpellSlotCost("Projectile_Fireball_5");
 setSpellSlotCost("Projectile_Fireball_6");
 setSpellSlotCost("Target_MistyStep_3");
 setSpellSlotCost("Projectile_GuidingBolt");
+setSpellSlotCost("Projectile_MagicMissile");
+setSpellSlotCost("Projectile_MagicMissile_2");
+setSpellSlotCost("Projectile_MagicMissile_3");
+setSpellSlotCost("Projectile_MagicMissile_4");
+setSpellSlotCost("Target_FogCloud");
+setSpellSlotCost("Target_FogCloud_2");
+setSpellSlotCost("Target_FogCloud_3");
+setSpellSlotCost("Target_FogCloud_4");
+setSpellSlotCost("Target_FogCloud_5");
+setSpellSlotCost("Target_FogCloud_6");
+
+addSpell("Target_MistyStep_3")
+addSpell("Target_HealingWord_6");
+
+setSpellSlotCost("Target_HealingWord");
+setSpellSlotCost("Target_HealingWord_2");
+setSpellSlotCost("Target_HealingWord_3");
+setSpellSlotCost("Target_HealingWord_4");
+setSpellSlotCost("Target_HealingWord_5");
+setSpellSlotCost("Target_HealingWord_6");
 
 // Add item(s) to inventory.
 // See:
