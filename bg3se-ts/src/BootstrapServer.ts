@@ -141,37 +141,190 @@ function printTable(table) {
 
 // Mod commands are persisted between game loads but not when the game reboots
 
-setSpellSlotCost("Projectile_Fireball_4");
-setSpellSlotCost("Projectile_Fireball_5");
-setSpellSlotCost("Projectile_Fireball_6");
-setSpellSlotCost("Target_MistyStep_3");
-setSpellSlotCost("Projectile_GuidingBolt");
-setSpellSlotCost("Projectile_MagicMissile");
-setSpellSlotCost("Projectile_MagicMissile_2");
-setSpellSlotCost("Projectile_MagicMissile_3");
-setSpellSlotCost("Projectile_MagicMissile_4");
-setSpellSlotCost("Target_FogCloud");
-setSpellSlotCost("Target_FogCloud_2");
-setSpellSlotCost("Target_FogCloud_3");
-setSpellSlotCost("Target_FogCloud_4");
-setSpellSlotCost("Target_FogCloud_5");
-setSpellSlotCost("Target_FogCloud_6");
+function runModsOnSessionLoaded() {
+    // _P("runModsOnSessionLoaded");
+    // Ext.RegisterConsoleCommand("log", log);
+    // Ext.RegisterConsoleCommand("getSpells", getSpells);
+    // Ext.RegisterConsoleCommand("getAllSpells", getAllSpells);
+    // Ext.RegisterConsoleCommand("setSpellSlotCost", setSpellSlotCost);
+    // Ext.RegisterConsoleCommand("addSpell", addSpell);
+    // Ext.RegisterConsoleCommand("getCharSpellAttributes", getCharSpellAttributes);
+    // Ext.RegisterConsoleCommand("getCharSpells", getCharSpells);
+    // Ext.RegisterConsoleCommand("sortTable", sortTable);
+    // Ext.RegisterConsoleCommand("printTable", printTable);
 
-addSpell("Target_MistyStep_3")
-addSpell("Target_HealingWord_6");
+    [
+        'Projectile_Fireball_4',
+        'Projectile_Fireball_5',
+        'Projectile_Fireball_6',
+        'Target_MistyStep_3',
+        'Projectile_GuidingBolt',
+        'Projectile_GuildingBolt_2',
+        'Projectile_MagicMissile',
+        'Projectile_MagicMissile_2',
+        'Projectile_MagicMissile_3',
+        'Projectile_MagicMissile_4',
 
-setSpellSlotCost("Target_HealingWord");
-setSpellSlotCost("Target_HealingWord_2");
-setSpellSlotCost("Target_HealingWord_3");
-setSpellSlotCost("Target_HealingWord_4");
-setSpellSlotCost("Target_HealingWord_5");
-setSpellSlotCost("Target_HealingWord_6");
+        'Target_HealingWord',
+        'Target_HealingWord_2',
+        'Target_HealingWord_3',
+        'Target_HealingWord_4',
+        'Target_HealingWord_5',
+        'Target_HealingWord_6',
+        'Target_CreateDestroyWater',
+        'Target_CreateWater',
+        'Target_CreateWater_2',
+        'Target_DestroyWater',
+        'Target_DestroyWater_2',
+
+        'Target_GaseousForm',
+
+        'Target_FogCloud',
+        'Target_FogCloud_2',
+        'Target_FogCloud_3',
+        'Target_FogCloud_4',
+        'Target_FogCloud_5',
+        'Target_FogCloud_6',
+
+        "Target_FindFamiliar",
+        "Target_FindFamiliar_2",
+        "Target_FindFamiliar_3",
+        "Target_FindFamiliar_4",
+        "Target_FindFamiliar_5",
+        "Target_FindFamiliar_6",
+        "Target_FindFamiliar_Boo",
+        "Target_FindFamiliar_Cat",
+        "Target_FindFamiliar_Cat_2",
+        "Target_FindFamiliar_Cat_3",
+        "Target_FindFamiliar_Cat_4",
+        "Target_FindFamiliar_Cat_5",
+        "Target_FindFamiliar_Cat_6",
+        "Target_FindFamiliar_Cat_Ritual",
+        "Target_FindFamiliar_Crab",
+        "Target_FindFamiliar_Crab_2",
+        "Target_FindFamiliar_Crab_3",
+        "Target_FindFamiliar_Crab_4",
+        "Target_FindFamiliar_Crab_5",
+        "Target_FindFamiliar_Crab_6",
+        "Target_FindFamiliar_Crab_Ritual",
+        "Target_FindFamiliar_Dog",
+        "Target_FindFamiliar_Dog_Ritual",
+        "Target_FindFamiliar_Frog",
+        "Target_FindFamiliar_Frog_2",
+        "Target_FindFamiliar_Frog_3",
+        "Target_FindFamiliar_Frog_4",
+        "Target_FindFamiliar_Frog_5",
+        "Target_FindFamiliar_Frog_6",
+        "Target_FindFamiliar_Frog_Ritual",
+        "Target_FindFamiliar_NPC",
+        "Target_FindFamiliar_Rat",
+        "Target_FindFamiliar_Rat_2",
+        "Target_FindFamiliar_Rat_3",
+        "Target_FindFamiliar_Rat_4",
+        "Target_FindFamiliar_Rat_5",
+        "Target_FindFamiliar_Rat_6",
+        "Target_FindFamiliar_Rat_Ritual",
+        "Target_FindFamiliar_Raven",
+        "Target_FindFamiliar_Raven_2",
+        "Target_FindFamiliar_Raven_3",
+        "Target_FindFamiliar_Raven_4",
+        "Target_FindFamiliar_Raven_5",
+        "Target_FindFamiliar_Raven_6",
+        "Target_FindFamiliar_Raven_NPC",
+        "Target_FindFamiliar_Raven_Ritual",
+        "Target_FindFamiliar_Ritual",
+        "Target_FindFamiliar_Spider",
+        "Target_FindFamiliar_Spider_2",
+        "Target_FindFamiliar_Spider_3",
+        "Target_FindFamiliar_Spider_4",
+        "Target_FindFamiliar_Spider_5",
+        "Target_FindFamiliar_Spider_6",
+        "Target_FindFamiliar_Spider_NPC",
+        "Target_FindFamiliar_Spider_Ritual",
+
+        'Projectile_ChromaticOrb',
+        'Projectile_ChromaticOrb_Acid',
+        'Projectile_ChromaticOrb_Acid_2',
+        'Projectile_ChromaticOrb_Acid_3',
+        'Projectile_ChromaticOrb_Acid_4',
+        'Projectile_ChromaticOrb_Acid_5',
+        'Projectile_ChromaticOrb_Acid_6',
+        'Projectile_ChromaticOrb_Acid_BookOfAncientSecrets',
+        'Projectile_ChromaticOrb_Acid_Monk',
+        'Projectile_ChromaticOrb_BookOfAncientSecrets',
+        'Projectile_ChromaticOrb_Cold',
+        'Projectile_ChromaticOrb_Cold_2',
+        'Projectile_ChromaticOrb_Cold_3',
+        'Projectile_ChromaticOrb_Cold_4',
+        'Projectile_ChromaticOrb_Cold_5',
+        'Projectile_ChromaticOrb_Cold_6',
+        'Projectile_ChromaticOrb_Cold_BookOfAncientSecrets',
+        'Projectile_ChromaticOrb_Cold_Monk',
+        'Projectile_ChromaticOrb_Fire',
+        'Projectile_ChromaticOrb_Fire_2',
+        'Projectile_ChromaticOrb_Fire_3',
+        'Projectile_ChromaticOrb_Fire_4',
+        'Projectile_ChromaticOrb_Fire_5',
+        'Projectile_ChromaticOrb_Fire_6',
+        'Projectile_ChromaticOrb_Fire_BookOfAncientSecrets',
+        'Projectile_ChromaticOrb_Fire_Monk',
+        'Projectile_ChromaticOrb_IceMephit',
+        'Projectile_ChromaticOrb_Lightning',
+        'Projectile_ChromaticOrb_Lightning_2',
+        'Projectile_ChromaticOrb_Lightning_3',
+        'Projectile_ChromaticOrb_Lightning_4',
+        'Projectile_ChromaticOrb_Lightning_5',
+        'Projectile_ChromaticOrb_Lightning_6',
+        'Projectile_ChromaticOrb_Lightning_BookOfAncientSecrets',
+        'Projectile_ChromaticOrb_Lightning_Monk',
+        'Projectile_ChromaticOrb_Monk',
+        'Projectile_ChromaticOrb_Poison',
+        'Projectile_ChromaticOrb_Poison_2',
+        'Projectile_ChromaticOrb_Poison_3',
+        'Projectile_ChromaticOrb_Poison_4',
+        'Projectile_ChromaticOrb_Poison_5',
+        'Projectile_ChromaticOrb_Poison_6',
+        'Projectile_ChromaticOrb_Poison_BookOfAncientSecrets',
+        'Projectile_ChromaticOrb_Poison_Monk',
+        'Projectile_ChromaticOrb_Thunder',
+        'Projectile_ChromaticOrb_Thunder_2',
+        'Projectile_ChromaticOrb_Thunder_3',
+        'Projectile_ChromaticOrb_Thunder_4',
+        'Projectile_ChromaticOrb_Thunder_5',
+        'Projectile_ChromaticOrb_Thunder_6',
+        'Projectile_ChromaticOrb_Thunder_BookOfAncientSecrets',
+        'Projectile_ChromaticOrb_Thunder_Monk',
+    ].forEach(spellName => {
+        setSpellSlotCost(spellName);
+    });
+
+    // addSpell("Target_MistyStep_3");
+    // addSpell("Target_HealingWord_6");
+}
 
 // Add item(s) to inventory.
 // See:
 //  - https://www.reddit.com/r/BaldursGate3/comments/15w6b72/help_need_to_find_item_uuid/
 // TemplateAddTo("UUID", GetHostCharacter(), quantity);
 // TemplateAddTo("LOOT_Camp_Pack", GetHostCharacter(), 4);
+
+runModsOnSessionLoaded();
+
+// Ext.Events.SessionLoaded:Subscribe(runModsOnSessionLoaded);
+// _P("Yay my mod!");
+
+// Ext.Utils.PrintWarning("testing???")
+//
+// Ext.Osiris.RegisterListener("MessageBoxYesNoClosed", 3, "after", function (char, msgbox, option)
+//     Ext.Utils.PrintWarning("Selected option: " .. option)
+// end)
+//
+// Ext.Osiris.RegisterListener("TurnEnded", 1, "after", function (char)
+//     if string.sub(char, -36) == GetHostCharacter() then
+//         Ext.Utils.PrintWarning("TurnEnded")
+//         Osi.OpenMessageBoxYesNo(Osi.GetHostCharacter(), "Is this thing working?")
+//     end
+// end)
 
 
 /*
