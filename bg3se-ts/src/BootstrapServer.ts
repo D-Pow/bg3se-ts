@@ -50,6 +50,18 @@ function log(...args) {
     });
 }
 
+function findInTable(t, word) {
+    const filteredTable = {};
+
+    for (const [ k, v ] of Object.entries(t)) {
+        if (string.gmatch(k, "\b" + word + "\b")) {
+            filteredTable[k] = v;
+        }
+    }
+
+    return filteredTable;
+}
+
 
 function getSpells() {
     const char = Ext.Entity.Get(GetHostCharacter());

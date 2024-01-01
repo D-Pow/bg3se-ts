@@ -108,6 +108,194 @@ function printTable(table)
 end
 
 
+-- https://stackoverflow.com/a/73135351/5771107
+function getSourceCode(f)
+    local t = debug.getinfo (f)
+
+    if t.linedefined < 0 then
+        print("source",t.source)
+
+        return
+    end
+
+    local name = t.source:gsub("^@","")
+    local i = 0
+    local text = {}
+
+    for line in io.lines(name) do
+        i=i+1
+
+        if i >= t.linedefined then
+            text[#text+1] = line
+        end
+
+        if i >= t.lastlinedefined then
+            break
+        end
+    end
+
+    return table.concat(text,"\n")
+end
+
+
+
+-- Doesn't work
+function getAllData(t, prevData)
+    local data = prevData or {}
+
+    for k, v in pairs(t) do
+        data[k] = data[k] or v
+    end
+
+    local mt = getmetatable(t)
+
+    if type(mt) ~ = 'table' then
+        return data
+    end
+
+    local index = mt.__index
+
+    if type(index) ~ = 'table' then
+        return data
+    end
+
+    return getAllData(index, data)
+end
+
+
+
+-- Doesn't work
+function printTable(table, indent)
+    local indent = indent or 0;
+    local keys = {};
+
+    for k in pairs(table) do
+        keys[#keys+1] = k;
+        table.sort(keys, function(a, b)
+            local ta, tb = type(a), type(b);
+
+            if (ta ~= tb) then
+                return ta < tb;
+            else
+                return a < b;
+            end
+        end);
+    end
+
+    print(string.rep('  ', indent)..'{');
+
+    indent = indent + 1;
+
+    for k, v in pairs(table) do
+
+        local key = k;
+
+        if (type(key) == 'string') then
+            if not (string.match(key, '^[A-Za-z_][0-9A-Za-z_]*$')) then
+                key = "['"..key.."']";
+            end
+        elseif (type(key) == 'number') then
+            key = "["..key.."]";
+        end
+
+        if (type(v) == 'table') then
+            if (next(v)) then
+                printf("%s%s =", string.rep('  ', indent), tostring(key));
+                printTable(v, indent);
+            else
+                printf("%s%s = {},", string.rep('  ', indent), tostring(key));
+            end
+        elseif (type(v) == 'string') then
+            printf("%s%s = %s,", string.rep('  ', indent), tostring(key), "'"..v.."'");
+        else
+            printf("%s%s = %s,", string.rep('  ', indent), tostring(key), tostring(v));
+        end
+    end
+
+    indent = indent - 1;
+
+    print(string.rep('  ', indent)..'}');
+end
+
+
+
+
+
+-- Idk
+
+
+function getAllData_other(t, prevData)
+    local data = prevData or {}
+
+    for k, v in pairs(t) do
+        data[k] = data[k] or v end local mt = getmetatable(t) if type(mt) ~ = 'table'
+    then
+        return data
+    end
+
+    local index = mt.__index
+
+    if type(index) ~ = 'table'then
+        return data
+    end
+
+    return getAllData_other(index, data)
+end
+
+function printTable_other(t, indent)
+    local indent = indent or 0;
+    local keys = {};
+
+    for k in pairs(t) do
+        keys[#keys+1] = k;
+        table.sort(keys, function(a, b)
+            local ta, tb = type(a), type(b);
+
+            if (ta ~= tb) then
+                return ta < tb;
+            else
+                return a < b;
+            end
+        end);
+    end
+
+    print(string.rep('  ', indent)..'{');
+
+    indent = indent + 1;
+
+    for k, v in pairs(t) do
+
+        local key = k;
+
+        if (type(key) == 'string') then
+            if not (string.match(key, '^[A-Za-z_][0-9A-Za-z_]*$')) then
+                key = "['"..key.."']";
+            end
+        elseif (type(key) == 'number') then
+            key = "["..key.."]";
+        end
+
+        if (type(v) == 'table') then
+            if (next(v)) then
+                printf("%s%s =", string.rep('  ', indent), tostring(key));
+                printTable_other(v, indent);
+            else
+                printf("%s%s = {},", string.rep('  ', indent), tostring(key));
+            end
+        elseif (type(v) == 'string') then
+            printf("%s%s = %s,", string.rep('  ', indent), tostring(key), "'"..v.."'");
+        else
+            printf("%s%s = %s,", string.rep('  ', indent), tostring(key), tostring(v));
+        end
+    end
+
+    indent = indent - 1;
+
+    print(string.rep('  ', indent)..'}');
+end
+
+
+
 
 -- https://stackoverflow.com/a/73135351/5771107
 -- function getSourceCode(f)
