@@ -68,7 +68,7 @@ function getSpells() {
 
 
 function getAllSpells() {
-    return Ext.Stats:GetStats("SpellData");
+    return Ext.Stats.GetStats("SpellData");
 }
 
 
