@@ -129,6 +129,7 @@ function getCharSpells() {
 }
 
 
+// https://stackoverflow.com/questions/55108794/what-is-the-difference-between-pairs-and-ipairs-in-lua
 function sortTable(table) {
     const sortedTable = Object.entries(table)
         .sort(([ k1, v1 ], [ k2, v2 ]) => k1.localeCompare(k2))
