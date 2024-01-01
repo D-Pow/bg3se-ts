@@ -17,7 +17,7 @@
     "./dist"
   ],
   "config": {
-    "buildOutputDir": "dist",
+    "buildOutputDir": "../Lua",
     "pathUsedByBg3se": "dist/BootstrapServer.lua",
     "eslintExtensions": ".tsx,.ts,.jsx,.js,.mjs,.cjs"
   },
