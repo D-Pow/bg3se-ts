@@ -45,6 +45,7 @@ export function patchTsToLuaBugs(str) {
     fixedFileContent = fixedFileContent.replace(/(?<=^|\n)local /g, '');
     fixedFileContent = fixedFileContent.replace(/____ = Ext\.Events\.SessionLoaded\nSubscribe\(([^,]+), ?([^\)]+)\)/, 'Ext.Events.SessionLoaded:Subscribe($2);');
     fixedFileContent = fixedFileContent.replace(/____ = Ext\.Events\.SessionLoaded\nSubscribe\(([^\)]+)\)/, 'Ext.Events.SessionLoaded:Subscribe($1);');
+    fixedFileContent = fixedFileContent.replace(/\n\)(?=\n)/g, ')');
 
     return fixedFileContent;
 }
