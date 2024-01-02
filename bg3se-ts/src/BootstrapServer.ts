@@ -50,6 +50,54 @@ function log(...args) {
     });
 }
 
+// https://stackoverflow.com/questions/55108794/what-is-the-difference-between-pairs-and-ipairs-in-lua
+// https://stackoverflow.com/questions/640642/how-do-you-copy-a-lua-table-by-value/640645#640645
+function deepCopy(orig) {
+    let copy = {};
+
+    if (typeof orig === 'table') {
+        for (const [ k, v ] of Object.entries(orig)) {
+            copy[deepCopy(k)] = deepCopy(v);
+        }
+
+        // https://www.lua.org/pil/13.html
+        setmetatable(copy, deepcopy(getmetatable(orig)));
+    } else {
+        copy = orig;
+    }
+
+    return copy;
+}
+
+// https://stackoverflow.com/questions/48188718/lua-sort-string-array-with-varying-casing/48189296#48189296
+function sortTable(t, {
+    caseInsensitive = true,
+}= {}) {
+    // const sortedTable = Object.entries(table)
+    //     .sort(([ k1, v1 ], [ k2, v2 ]) => k1.localeCompare(k2))
+    //     .reduce((obj, [ key, val ]) => {
+    //         obj[key] = val;
+    //
+    //         return obj;
+    //     }, {});
+
+    if (caseInsensitive) {
+        table.sort(t, (a, b) => string.upper(a) < string.upper(b));
+    } else {
+        table.sort(t);
+    }
+
+    return t;
+}
+
+function printTable(table) {
+    const sortedTable = sortTable(table);
+
+    log(sortedTable);
+
+    return sortedTable;
+}
+
 function findInTable(t, word) {
     const filteredTable = {};
 
@@ -105,6 +153,13 @@ function addSpell(spellName) {
 }
 
 
+function addItem(itemUuid, quantity = 1) {
+    // e.g. Gold (itemName=LOOT_Gold_A):
+    //  addItem("1c3c9c74-34a1-4685-989e-410dc080be6f", 7000)
+    TemplateAddTo(itemUuid, GetHostCharacter(), quantity);
+}
+
+
 function getCharSpellAttributes() {
     let spells = {};
 
@@ -126,29 +181,6 @@ function getCharSpells() {
     Object.entries(spellBook).forEach(([ key, val ]) => {
         log(key, val);
     });
-}
-
-
-// https://stackoverflow.com/questions/55108794/what-is-the-difference-between-pairs-and-ipairs-in-lua
-function sortTable(table) {
-    const sortedTable = Object.entries(table)
-        .sort(([ k1, v1 ], [ k2, v2 ]) => k1.localeCompare(k2))
-        .reduce((obj, [ key, val ]) => {
-            obj[key] = val;
-
-            return obj;
-        }, {});
-
-    return sortedTable;
-}
-
-
-function printTable(table) {
-    const sortedTable = sortTable(table);
-
-    log(sortedTable);
-
-    return sortedTable;
 }
 
 
