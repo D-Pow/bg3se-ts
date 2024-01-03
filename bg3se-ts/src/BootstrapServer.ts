@@ -43,6 +43,10 @@ declare function _P(arg): void;
 
 
 
+let char = GetHostCharacter();
+
+// for i,v in pairs(Ext.Entity.GetAllEntitiesWithUuid()) do local ccs = Ext.Entity.Get(i):GetAllComponents() if ccs ~= nil and ccs.CharacterCreationStats ~= nil and ccs.CharacterCreationStats.Name == "DextreBeDextre" then uuid = ccs.Uuid.EntityUuid me = Ext.Entity.Get(uuid):GetAllComponents() _D(me) end end
+
 function log(...args) {
     // console.log(util.inspect(sortedTable, { depth: undefined, showHidden: true, colors: true }));
     args.forEach(arg => {
@@ -112,7 +116,7 @@ function findInTable(t, word) {
 
 
 function getSpells() {
-    const char = Ext.Entity.Get(GetHostCharacter());
+    const char = Ext.Entity.Get(char);
     const charComponents = char.GetAllComponents();
 
     const spells = {};
@@ -149,21 +153,21 @@ function setSpellSlotCost(spellName, slotCost = 0) {
 
 
 function addSpell(spellName) {
-    AddSpell(GetHostCharacter(), spellName, 0, 1)
+    AddSpell(char, spellName, 0, 1)
 }
 
 
 function addItem(itemUuid, quantity = 1) {
     // e.g. Gold (itemName=LOOT_Gold_A):
     //  addItem("1c3c9c74-34a1-4685-989e-410dc080be6f", 7000)
-    TemplateAddTo(itemUuid, GetHostCharacter(), quantity);
+    TemplateAddTo(itemUuid, char, quantity);
 }
 
 
 function getCharSpellAttributes() {
     let spells = {};
 
-    Object.entries(Ext.Entity.Get(GetHostCharacter()).SpellBook).forEach(([ k1, v1 ]) => {
+    Object.entries(Ext.Entity.Get(char).SpellBook).forEach(([ k1, v1 ]) => {
         Object.entries(v1).forEach(([ k2, v2 ]) => {
             spells = v2;
         });
@@ -176,7 +180,7 @@ function getCharSpellAttributes() {
 
 
 function getCharSpells() {
-    const spellBook = Ext.Entity.Get(GetHostCharacter()).SpellBook;
+    const spellBook = Ext.Entity.Get(char).SpellBook;
 
     Object.entries(spellBook).forEach(([ key, val ]) => {
         log(key, val);
@@ -526,8 +530,8 @@ function runModsOnSessionLoaded() {
 // Add item(s) to inventory.
 // See:
 //  - https://www.reddit.com/r/BaldursGate3/comments/15w6b72/help_need_to_find_item_uuid/
-// TemplateAddTo("UUID", GetHostCharacter(), quantity);
-// TemplateAddTo("LOOT_Camp_Pack", GetHostCharacter(), 4);
+// TemplateAddTo("UUID", char, quantity);
+// TemplateAddTo("LOOT_Camp_Pack", char, 4);
 
 runModsOnSessionLoaded();
 
@@ -541,7 +545,7 @@ runModsOnSessionLoaded();
 // end)
 //
 // Ext.Osiris.RegisterListener("TurnEnded", 1, "after", function (char)
-//     if string.sub(char, -36) == GetHostCharacter() then
+//     if string.sub(char, -36) == char then
 //         Ext.Utils.PrintWarning("TurnEnded")
 //         Osi.OpenMessageBoxYesNo(Osi.GetHostCharacter(), "Is this thing working?")
 //     end
@@ -552,7 +556,7 @@ runModsOnSessionLoaded();
 Ext.Stats.GetStats("SpellData")
 function foo() {
     function parseFourth()
-        for k,v in pairs(Ext.Entity.Get(GetHostCharacter())) do
+        for k,v in pairs(Ext.Entity.Get(char)) do
             return k, v
         end
     end
@@ -588,7 +592,7 @@ function foo() {
         end
     end
 
-    Ext.Entity.Get(GetHostCharacter()):GetAllComponents()
+    Ext.Entity.Get(char):GetAllComponents()
 
     print(parseFirst())
 }
