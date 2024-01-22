@@ -436,6 +436,8 @@ modSpellsToRemoveCost.push(
     'Target_Command_Halt_NPC',
 );
 modSpellsToRemoveCost.push(
+    'Target_Sanctuary',
+    'Target_Sanctuary_2',
     'Shout_DisguiseSelf',
     'Shout_DisguiseSelf_Cancel',
     'Shout_DisguiseSelf_Dragonborn_Female',
