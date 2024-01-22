@@ -141,11 +141,12 @@ function setSpellSlotCost(spellName, slotCost = 0) {
     const { UseCosts } = spell;
     // const spellLevel = UseCosts.match(/(?<=:)\d+$/)[0];
     const spellLevel = string.gsub(UseCosts, ".*:(%d+)$", "%1");
+    const spellActionCost = string.gsub(UseCosts, "^([^:]+).*$", "%1");
 
     if (slotCost > 0) {
-        spell.UseCosts = `ActionPoint:1;SpellSlotsGroup:${slotCost}:${slotCost}:${spellLevel}`;
+        spell.UseCosts = `${spellActionCost}:1;SpellSlotsGroup:${slotCost}:${slotCost}:${spellLevel}`;
     } else {
-        spell.UseCosts = 'ActionPoint:1';
+        spell.UseCosts = `${spellActionCost}:1`;
     }
 
     Ext.Stats.Get(spellName):Sync();
