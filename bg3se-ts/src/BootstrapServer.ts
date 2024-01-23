@@ -44,10 +44,22 @@ declare function _P(arg): void;
 
 
 function getChar() {
-    return GetHostCharacter();
-}
+    // for i,v in pairs(Ext.Entity.GetAllEntitiesWithUuid()) do local ccs = Ext.Entity.Get(i):GetAllComponents() if ccs ~= nil and ccs.CharacterCreationStats ~= nil and ccs.CharacterCreationStats.Name == "DextreBeDextre" then local uuid = ccs.Uuid.EntityUuid local me = Ext.Entity.Get(uuid):GetAllComponents() _D(me) end end
+    let me = GetHostCharacter();
 
-// for i,v in pairs(Ext.Entity.GetAllEntitiesWithUuid()) do local ccs = Ext.Entity.Get(i):GetAllComponents() if ccs ~= nil and ccs.CharacterCreationStats ~= nil and ccs.CharacterCreationStats.Name == "DextreBeDextre" then uuid = ccs.Uuid.EntityUuid me = Ext.Entity.Get(uuid):GetAllComponents() _D(me) end end
+    // TODO - Determine if client vs server and return character from that
+    for (const [ k, v ] of Object.entries(Ext.Entity.GetAllEntitiesWithUuid())) {
+        const ccs = Ext.Entity.Get(k).GetAllComponents();
+        // Ext.Entity.Get(GetHostCharacter()).Uuid.EntityUuid
+        const uuid = ccs.Uuid.EntityUuid;
+
+        if (ccs?.CharacterCreationStats?.Name == 'DextreBeDextre' || ccs?.CharacterCreationStats?.Name == 'Raziel') {
+            // me = Ext.Entity.Get(uuid).GetAllComponents();
+        }
+    }
+
+    return me;
+}
 
 function log(...args) {
     // console.log(util.inspect(sortedTable, { depth: undefined, showHidden: true, colors: true }));
