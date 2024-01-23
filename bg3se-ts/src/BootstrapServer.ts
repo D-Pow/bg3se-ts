@@ -132,6 +132,9 @@ function getSpells() {
     return spells;
 }
 
+// Ext.Stats.GetStats("PassiveData")
+// AddPassive(GetHostCharacter(), "FastHands")
+// AddPassive(GetHostCharacter(), "ModeratelyArmored")
 
 function getAllSpells() {
     return Ext.Stats.GetStats("SpellData");
