@@ -1,6 +1,6 @@
 (TODO)
 
-Path: `%APPDATA%/Local/Larian Studios/Baldur's Gate 3/Mods/<mod-name>/ScriptExtender/<this-repo>`
+Path (see [Issue 456](https://github.com/Norbyte/bg3se/issues/456)): `%APPDATA%/Local/Larian Studios/Baldur's Gate 3/Mods/<mod-name>/ScriptExtender/<this-repo>`
 
 https://github.com/Norbyte/bg3se/blob/main/Docs/API.md
 https://typescripttolua.github.io
